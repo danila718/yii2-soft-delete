@@ -11,8 +11,8 @@ Add repository
 ```
 "repositories":[
     {
-        "type": "git",
-        "url": "https://github.com/danila718/yii2-soft-delete"
+        "type": "vcs",
+        "url": "https://github.com/danila718/yii2-soft-delete.git"
     }
 ]
 ```
