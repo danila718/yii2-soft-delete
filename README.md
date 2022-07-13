@@ -1,13 +1,10 @@
-Yii2 Soft Delete
-================
-This extension implements the soft delete capabilities of Yii2.
+# Yii2 Soft Delete
 
-Installation
-------------
+Это расширение реализует возможности "Soft delete" для Yii2.
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+## Установка
 
-Add repository
+1. Добавить репозиторий в `composer.json`
 ```
 "repositories":[
     {
@@ -16,11 +13,53 @@ Add repository
     }
 ]
 ```
-and run
+2. Запустить:
 ```
 composer require danila718/yii2-soft-delete:dev-master
 ```
-or add to `composer.json`
+
+## Использование
+
+В классе модели `yii\db\ActiveRecord`:
+
+1. Добавить `deleted_at` (int) и индекс для него в БД
+2. Добавить трейт `use SoftDelete;`
+3. Добавить поведение `SoftDeleteBehavior` в метод behaviors
+
 ```
-"danila718/yii2-soft-delete": "dev-master"
+class Model extends \yii\db\ActiveRecord
+{
+    use SoftDelete;
+
+    public function behaviors()
+    {
+        return [
+            SoftDeleteBehavior::class,
+        ];
+        /*
+            В варианте ниже поведение будет зазполнять поля created_at, updated_at, deleted_at, 
+            т.к. SoftDeleteBehavior расширен от TimestampBehavior и при флаге withTimestamp = true
+            будет также запускать методы родителя
+        */ 
+        return [
+            [
+                'class' => SoftDeleteBehavior::class,
+                'withTimestamp' => true,
+            ]
+        ];
+    }
+}
 ```
+
+## API
+
+### ActiveRecord (с трейтом SoftDelete)
+
+- метод find() возвращает объект `softDelete\ActiveQuery`
+- новые методы `findWithTrashed()`, `findOnlyTrashed()`, `findOneWithTrashed()`, `findAllWithTrashed()`, `findOneOnlyTrashed()`, `findAllOnlyTrashed()`, `isTrashed()`
+- добавлен приватный флаг `private $forceDelete = false;` 
+- метод `delete()` по умолчанию выполнит soft delete, если `$forceDelete == false`, добавлены методы `softDelete()`, `restore()`, `forceDelete()` - реальное удаление 
+
+### softDelete\ActiveQuery
+
+- новые методы `withTrashed()`, `withoutTrashed()`, `onlyTrashed()`
