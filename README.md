@@ -5,7 +5,7 @@
 ## Установка
 
 1. Добавить репозиторий в `composer.json`
-```
+```json
 "repositories":[
     {
         "type": "vcs",
@@ -22,11 +22,11 @@ composer require danila718/yii2-soft-delete:dev-master
 
 В классе модели `yii\db\ActiveRecord`:
 
-1. Добавить `deleted_at` (int) и индекс для него в БД
+1. Добавить столбец `deleted_at` (int) и индекс для него в БД
 2. Добавить трейт `use SoftDelete;`
 3. Добавить поведение `SoftDeleteBehavior` в метод behaviors
 
-```
+```php
 class Model extends \yii\db\ActiveRecord
 {
     use SoftDelete;
@@ -36,11 +36,11 @@ class Model extends \yii\db\ActiveRecord
         return [
             SoftDeleteBehavior::class,
         ];
-        /*
-            В варианте ниже поведение будет зазполнять поля created_at, updated_at, deleted_at, 
-            т.к. SoftDeleteBehavior расширен от TimestampBehavior и при флаге withTimestamp = true
-            будет также запускать методы родителя
-        */ 
+        /**
+         * В варианте ниже поведение будет зазполнять поля created_at, updated_at, deleted_at, 
+         * т.к. SoftDeleteBehavior расширен от TimestampBehavior и при флаге withTimestamp = true
+         * будет также запускать методы родителя
+         */ 
         return [
             [
                 'class' => SoftDeleteBehavior::class,
