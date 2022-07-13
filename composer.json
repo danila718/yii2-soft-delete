@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Danila718\\SoftDelete\\": "src"
+            "danila718\\softDelete\\": "src"
         }
     }
 }

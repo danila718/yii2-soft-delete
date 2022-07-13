@@ -1,6 +1,6 @@
 <?php
 
-namespace Danila718\SoftDelete;
+namespace danila718\softDelete;
 
 use yii\db\QueryBuilder;
 

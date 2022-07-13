@@ -1,6 +1,6 @@
 <?php
 
-namespace Danila718\SoftDelete;
+namespace danila718\softDelete;
 
 use Yii;
 use yii\base\InvalidConfigException;
@@ -8,7 +8,7 @@ use yii\base\ModelEvent;
 use yii\db\ActiveQueryInterface;
 use yii\db\StaleObjectException;
 use yii\helpers\ArrayHelper;
-use Danila718\SoftDelete\Behaviors\SoftDeleteBehavior;
+use danila718\softDelete\behaviors\SoftDeleteBehavior;
 
 trait SoftDelete
 {
@@ -127,7 +127,7 @@ trait SoftDelete
 
     public function isTrashed()
     {
-        return ! empty($this->getOldAttribute(static::$deletedAtAttribute));
+        return !empty($this->getOldAttribute(static::$deletedAtAttribute));
     }
 
     public function beforeSoftDelete()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Danila718\SoftDelete\Behaviors;
+namespace danila718\softDelete\behaviors;
 
 use yii\behaviors\TimestampBehavior;
 
@@ -8,7 +8,7 @@ use yii\behaviors\TimestampBehavior;
  * Class SoftDeleteBehavior
  *
  * ```php
- * use Danila718\SoftDelete\Behaviors\SoftDeleteBehavior;
+ * use danila718\softDelete\behaviors\SoftDeleteBehavior;
  *
  * public function behaviors()
  * {
@@ -18,7 +18,7 @@ use yii\behaviors\TimestampBehavior;
  * }
  * ```
  *
- * @package Danila718\SoftDelete\Behaviors
+ * @package danila718\softDelete\behaviors
  * @property $owner
  */
 class SoftDeleteBehavior extends TimestampBehavior
