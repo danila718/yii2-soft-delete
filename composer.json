@@ -1,0 +1,26 @@
+{
+    "name": "danila718/yii2-soft-delete",
+    "description": "This extension implements the soft delete capabilities of Yii2.",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "extension",
+        "softdelete",
+        "soft delete"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniil Simonyan",
+            "email": "danila718@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Danila718\\SoftDelete\\": "src"
+        }
+    }
+}
